@@ -8,8 +8,8 @@ def notifyMe(title, message):
         title = title,
         message = message,
         app_name = 'Corona Stats',
-        app_icon = '/home/devilyash/Documents/Python/Web Scrapping/icon14.png',
-        timeout = 15
+        app_icon = '/home/devilyash/Documents/Python/Coronavirus Cases Notifier/icon14.png',
+        timeout = 20
     )
 
 def getData(url):
@@ -20,7 +20,6 @@ if __name__ == "__main__":
     while True:
         # notifyMe("Yash", "lets stop the spreaf the virus togehter")
         myHtmlData = getData("https://www.mohfw.gov.in/")
-
         soup = BeautifulSoup(myHtmlData, 'html.parser')
         # print(soup.prettify())
 
@@ -28,17 +27,18 @@ if __name__ == "__main__":
         for tr in soup.find_all('tbody')[0].find_all('tr'):
             myDataStr += tr.get_text()
         myDataStr = myDataStr[1:]
+        # print(myDataStr)
         itemList = myDataStr.split("\n\n")
 
-        states = ['Rajasthan', 'Maharashtra', 'Uttar Pradesh', 'Delhi']
+        states = ['Rajasthan', 'Maharashtra', 'Uttar Pradesh']
         total = ['Total number of confirmed cases in India']
-        for i in itemList[33:35]:
+        for i in itemList[32:35]:
             dataList = i.split('\n')
             if dataList[0] in total:
                 nTitle = "Total Cases of Cornavirus in INDIA"
-                nText = f"Total number of confirmed cases in India: {dataList[1]}"
+                nText = f"Total number of confirmed cases in India: {dataList[1]}\nTotal Patients Cured/ Discharged: {itemList[33]}\nTotal Deaths: {itemList[34][1:5]}"
                 notifyMe(nTitle,nText)
-                time.sleep(3)
+                time.sleep(2)
 
         for item in itemList[:32]:
             dataList = item.split('\n')
