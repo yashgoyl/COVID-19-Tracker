@@ -1,0 +1,39 @@
+SNo    State                                       Total-Active-Cases  Cured    Death      Total-Confirmed-Cases
+-----  ----------------------------------------  --------------------  -------  -------  -----------------------
+1      Andaman and Nicobar Islands                                  1  33       0                             34
+2      Andhra Pradesh                                            2292  2899     78                          5269
+3      Arunachal Pradesh                                           55  2        0                             57
+4      Assam                                                     1839  1249     4                           3092
+5      Bihar                                                     2606  3071     33                          5710
+6      Chandigarh                                                  36  286      5                            327
+7      Chhattisgarh                                               854  402      6                           1262
+8      Dadra and Nagar Haveli and Daman and Diu                    26  2        0                             28
+9      Delhi                                                    19581  12245    984                        32810
+10     Goa                                                        320  67       0                            387
+11     Gujarat                                                   5439  14735    1347                       21521
+12     Haryana                                                   3339  2188     52                          5579
+13     Himachal Pradesh                                           191  254      6                            451
+14     Jammu and Kashmir                                         2785  1671     51                          4507
+15     Jharkhand                                                  889  592      8                           1489
+16     Karnataka                                                 3110  2862     69                          6041
+17     Kerala                                                    1238  905      18                          2161
+18     Ladakh                                                      62  52       1                            115
+19     Madhya Pradesh                                            2730  6892     427                        10049
+20     Maharashtra                                              46086  44517    3438                       94041
+21     Manipur                                                    248  63       0                            311
+22     Meghalaya                                                   30  13       1                             44
+23     Mizoram                                                     92  1        0                             93
+24     Nagaland                                                   106  22       0                            128
+25     Odisha                                                     959  2282     9                           3250
+26     Puducherry                                                  74  53       0                            127
+27     Punjab                                                     518  2232     55                          2805
+28     Rajasthan                                                 2772  8569     259                        11600
+29     Sikkim                                                      13  0        0                             13
+30     Tamil Nadu                                               17182  19333    326                        36841
+31     Telangana                                                 2138  1817     156                         4111
+32     Tripura                                                    655  239      1                            895
+33     Uttarakhand                                                716  831      15                          1562
+34     Uttar Pradesh                                             4418  6871     321                        11610
+35     West Bengal                                               5117  3779     432                         9328
+       Cases being reassigned to states                          8931                                       8931
+37     Total Cases                                             137448  141029   8102                      286579
