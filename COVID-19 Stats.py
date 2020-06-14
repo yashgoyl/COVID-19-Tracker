@@ -57,12 +57,12 @@ if __name__ == "__main__":
     # print(objects)
 
     #position of each state in objects list
-    y_pos = np.arange(len(objects)-1)
+    y_pos = np.arange(len(objects))
     # print(y_pos)
 
     #list of Active Cases of all states
     performance = []
-    for row in stats[:len(stats)-2]:
+    for row in stats[:len(stats)-1]:
         performance.append(int(row[2]))
 
     performance.append(int(stats[-1][2][:len(stats[-1][2])-1]))
@@ -70,21 +70,6 @@ if __name__ == "__main__":
 # Below 2 lines is to built table for getting all details of corona virus cases in india.
     table = tabulate(stats, headers=SHORT_HEADERS)
     print(table)
-
-# Below 12 lines is to plot graph of Active Cases of all Cities in india using Matplotlib
-    plt.barh(y_pos, performance, align='center', alpha=0.5,  
-                    color=(234/256.0, 128/256.0, 252/256.0),  
-                    edgecolor=(106/256.0, 27/256.0, 154/256.0))  
-        
-    plt.yticks(y_pos, objects)  
-    plt.xlim(1,performance[-1]+1000) 
-    plt.subplots_adjust(left=0.25) 
-    plt.xlabel('Number of Cases')  
-    plt.title('Corona Virus Cases and Total Active Cases = ')
-    plt.text(11300, 38.2, int(stats[36][2]), horizontalalignment='center', verticalalignment='center')
-    # plt.savefig('stats.png') 
-    plt.show()
-
 
     f = open('stats.txt','w')
     f.write(table)
@@ -100,7 +85,7 @@ if __name__ == "__main__":
     pdf.output("stats.pdf")  
 
 
-# Below Part is for Notification
+# Below Code is for Notification
     states = ['Rajasthan', 'Maharashtra', 'Uttar Pradesh', 'Delhi']
     
     for dataList in stats[36:37]:    
@@ -116,4 +101,19 @@ if __name__ == "__main__":
             nText = f"State {dataList[1]}:\nTotal Active Cases: {dataList[2]}\nCured/ Discharged: {dataList[3]}\nDeaths: {dataList[4]}\nTotal Confirmed Cases: {dataList[5]}"
             notifyMe(nTitle, nText)
             time.sleep(4)
+    
+
+    # Below 11 lines is to plot graph of Active Cases of all Cities in india using Matplotlib
+    plt.barh(y_pos, performance, align='center', alpha=0.5,  
+                    color=(234/256.0, 128/256.0, 252/256.0),  
+                    edgecolor=(106/256.0, 27/256.0, 154/256.0))  
+    plt.yticks(y_pos, objects)  
+    plt.xlim(1,performance[-1]+1000) 
+    plt.subplots_adjust(left=0.25) 
+    plt.xlabel('Number of Cases')  
+    plt.title('Corona Virus Cases in India                                      Total Confirmed Cases = ')
+    plt.text(14400, 39.3, int(stats[36][5]), horizontalalignment='center', verticalalignment='center')
+    # plt.savefig('stats.png') 
+    plt.show()
+
     time.sleep(3600)
