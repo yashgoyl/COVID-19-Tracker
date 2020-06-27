@@ -8,6 +8,10 @@ from fpdf import FPDF
 import pdfkit
 import os
 import matplotlib.pyplot as plt 
+import csv
+from reportlab.pdfgen import canvas 
+from openpyxl import Workbook
+
 
 def notifyMe(title, message):
     notification.notify(
@@ -68,22 +72,39 @@ if __name__ == "__main__":
     performance.append(int(stats[-1][2][:len(stats[-1][2])-1]))
 
 # Below 2 lines is to built table for getting all details of corona virus cases in india.
-    table = tabulate(stats, headers=SHORT_HEADERS)
+    table = tabulate(stats, headers=SHORT_HEADERS, tablefmt="pretty")
     print(table)
+    # below 6 lines will convert this table to .csv file
+    with open('new.csv', 'w', newline='') as f:
+        thewriter = csv.writer(f)
 
-    f = open('stats.txt','w')
-    f.write(table)
-    f.close()
+        thewriter.writerow(SHORT_HEADERS)
+        for i in stats:
+            thewriter.writerow(i)
 
-# Next 7 lines is to convert text file to pdf using pdfkit
-    pdf = FPDF()
-    pdf.add_page(orientation='P')
-    pdf.set_font('Arial', size = 11)
-    f = open('stats.txt','r')
-    for x in f:
-        pdf.cell(300, 15, txt = x, ln= 1, align="L") 
-    pdf.output("stats.pdf")  
+    wb = Workbook()
+    ws = wb.active
+    with open('stats.csv', 'r') as f:
+        for row in csv.reader(f):
+            ws.append(row)
+    wb.save('stats.xlsx')
 
+
+    # pdfkit.from_file('stats.csv', 'stats.pdf')
+
+    # f = open('stats.txt','w')
+    # f.write(table)
+    # f.close()
+
+# # Next 7 lines is to convert text file to pdf using pdfkit
+#     pdf = FPDF()
+#     pdf.add_page(orientation='P')
+#     pdf.set_font('Arial', size = 11)
+#     f = open('new.csv','r')
+#     for x in f:
+#         pdf.cell(300, 15, txt = x, ln= 1, align="L") 
+#     pdf.output("stats.pdf") 
+# 
 
 # Below Code is for Notification
     states = ['Rajasthan', 'Maharashtra', 'Uttar Pradesh', 'Delhi']
