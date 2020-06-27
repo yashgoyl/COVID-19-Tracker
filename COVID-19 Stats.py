@@ -75,7 +75,7 @@ if __name__ == "__main__":
     table = tabulate(stats, headers=SHORT_HEADERS, tablefmt="pretty")
     print(table)
     # below 6 lines will convert this table to .csv file
-    with open('new.csv', 'w', newline='') as f:
+    with open('stats.csv', 'w', newline='') as f:
         thewriter = csv.writer(f)
 
         thewriter.writerow(SHORT_HEADERS)
