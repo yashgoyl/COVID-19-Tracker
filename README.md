@@ -9,6 +9,7 @@ _This will save a excel file in your current directory to see detailed stats of 
 _This will also save a graph for the comparision between the states in terms of number of cases._
 
 ![stats table](https://github.com/Devilyash/COVID-19-Updates-Tracker/blob/master/image/table.png)
+By : Yash Goyal
 
 MIT License
 ===========
